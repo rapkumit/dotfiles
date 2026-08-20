@@ -2,7 +2,7 @@
 
 ocean blue based theme
 
-![Theme Preview](.config/omarchy/themes/pael/preview)
+![Theme Preview](.config/omarchy/themes/pael/preview.png)
 
 ## Directories
 
