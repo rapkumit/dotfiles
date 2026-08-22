@@ -14,4 +14,4 @@ ocean blue based theme
 
 **Power Management:** powerprofilesctl + cardwire (fuck asusctl atm)
 
-**Omarchy Plugins:** [Vitals](https://omarchyplugins.com/plugin.html?id=io.github.woogy7.vitals), [Weathering](https://omarchyplugins.com/plugin.html?id=io.github.howdyitskyle.weathering), [omaview](https://omarchyplugins.com/plugin.html?id=io.github.manas-kenge.omaview), [screens](https://omarchyplugins.com/plugin.html?id=im0001gt.screens) (unverified; so fucking useful though)
+**Omarchy Plugins:** [Vitals](https://omarchyplugins.com/plugin.html?id=io.github.woogy7.vitals), [Weathering](https://omarchyplugins.com/plugin.html?id=io.github.howdyitskyle.weathering), [Calendar Clock](https://omarchyplugins.com/plugin.html?id=matteodevenuto.clock), [screens](https://omarchyplugins.com/plugin.html?id=im0001gt.screens) (unverified; so fucking useful though)
