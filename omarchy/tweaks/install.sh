@@ -3,15 +3,16 @@
 # FOR: Hardware Udev Rules (amd-igpu, nvidia-dgpu, atk-hub, integrated-webcam)
 UDEV_DIR="/etc/udev/rules.d"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-TWEAKS_DIR="$SCRIPT_DIR/tweaks"
 
-if [ ! -d "$TWEAKS_DIR" ]; then
-    echo "Directory $TWEAKS_DIR not found!"
+# Find all .rules files in the current folder and subdirectories (e.g., fa507nu/udev/)
+RULE_FILES=$(find "$SCRIPT_DIR" -type f -name "*.rules")
+
+if [ -z "$RULE_FILES" ]; then
+    echo "No .rules files found in $SCRIPT_DIR!"
     exit 1
 fi
 
-for RULE_FILE in "$TWEAKS_DIR"/*.rules; do
-    [ -e "$RULE_FILE" ] || continue
+echo "$RULE_FILES" | while read -r RULE_FILE; do
     FILENAME=$(basename "$RULE_FILE")
 
     echo "Copying $FILENAME -> $UDEV_DIR/$FILENAME"
@@ -25,3 +26,5 @@ sudo udevadm control --reload-rules
 sudo udevadm trigger
 
 ls -l "$UDEV_DIR"
+
+# TODO: Differ this with multiple setups
