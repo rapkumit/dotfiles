@@ -7,9 +7,11 @@ hl.config({
     gaps_in = 5,
     gaps_out = 10,
     border_size = 1,
+
+    allow_tearing = true,
   },
 
-    xwayland = {
+  xwayland = {
     force_zero_scaling = true,
   },
 })
@@ -43,8 +45,15 @@ hl.config({
 
       -- Left-click-and-drag with three fingers.
       drag_3fg = 0,
+
+      disable_while_typing = 0,
     },
   },
+})
+
+hl.device({
+    name = "asuf1204:00-2808:0202-touchpad",
+    sensitivity = 0.5
 })
 
 -- Touchpad gestures.
@@ -110,6 +119,23 @@ local unbindList = {
 for _, bind_str in ipairs(unbindList) do
     hl.unbind(bind_str)
 end
+
+-- Conditional fullscreen binding
+hl.unbind("SUPER + F")
+hl.bind("SUPER + F", function()
+  local active = hl.get_active_window()
+  -- Ensure active window exists before checking properties
+  if active and active.class then
+    local class_name = active.class:lower()
+    -- If Gamescope is active, send pass directly or simply do nothing
+    if class_name:find("gamescope") then
+      hl.dispatch(hl.dsp.pass({ window = "class:^(gamescope)$" }))
+      return
+    end
+  end
+  -- Default: Standard fullscreen toggle for all other apps
+  hl.dispatch(hl.dsp.window.fullscreen({ action = "toggle" }))
+end)
 
 -- Bind List.
 local bindList = {
